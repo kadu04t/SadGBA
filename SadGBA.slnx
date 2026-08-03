@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="SadGBA.Cli/SadGBA.Cli.csproj" />
   <Project Path="SadGBA.Core/SadGBA.Core.csproj" />
+  <Project Path="SadGBA.Tests/SadGBA.Tests.csproj" />
 </Solution>
 
