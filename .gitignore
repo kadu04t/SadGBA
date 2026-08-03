@@ -1,0 +1,16 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+[Tt]est[Rr]esult*/
+*.binlog
+
+# Local firmware and games
+/BiosGBA/
+/GamesGBA/
+/TEMP/
+*.gba
+*.sav
+
