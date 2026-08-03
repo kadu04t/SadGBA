@@ -4,8 +4,8 @@ using SadGBA.Core.Interrupts;
 namespace SadGBA.Core.Dma;
 
 /// <summary>
-/// Quatro canais DMA do GBA. Transferências de início imediato são executadas
-/// sincronicamente; gatilhos HBlank/VBlank/FIFO podem reutilizar Trigger().
+/// Models the four GBA DMA channels. Immediate transfers run synchronously;
+/// HBlank, VBlank, and FIFO events can trigger deferred channels.
 /// </summary>
 public sealed class DmaController
 {
@@ -59,7 +59,7 @@ public sealed class DmaController
         }
     }
 
-    /// <summary>Dispara canais configurados para o timing indicado (1=VBlank, 2=HBlank, 3=especial).</summary>
+    /// <summary>Triggers channels configured for the given timing (1=VBlank, 2=HBlank, 3=special).</summary>
     public void Trigger(int startTiming)
     {
         foreach (DmaChannel channel in _channels)
@@ -101,7 +101,7 @@ public sealed class DmaController
         if (channel.IrqEnabled)
             _interrupts.Request((InterruptSource)((ushort)InterruptSource.Dma0 << channelIndex));
 
-        // Repeat só mantém o canal para gatilhos não imediatos.
+        // Repeat only keeps channels enabled for non-immediate triggers.
         if (!channel.Repeat || channel.StartTiming == 0)
             channel.Control &= 0x7FFF;
     }

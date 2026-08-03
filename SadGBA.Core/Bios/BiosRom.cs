@@ -1,6 +1,6 @@
 namespace SadGBA.Core.Bios;
 
-/// <summary>ROM de sistema do Game Boy Advance (16 KiB, somente leitura).</summary>
+/// <summary>Read-only 16 KiB Game Boy Advance system ROM.</summary>
 public sealed class BiosRom
 {
     public const int SizeInBytes = 16 * 1024;

@@ -5,7 +5,7 @@ using SadGBA.Core.Ppu;
 
 namespace SadGBA.Core.Bus;
 
-/// <summary>Mapa físico de 32 bits do Game Boy Advance e seus espelhos.</summary>
+/// <summary>Routes the Game Boy Advance 32-bit physical address space and its mirrors.</summary>
 public sealed class GbaBus
 {
     public BiosRom Bios { get; }

@@ -91,11 +91,11 @@ public sealed class TimingTests
     public void Mode0RendersFourBitTileBackground()
     {
         var bus = new GbaBus();
-        bus.Write16(0x0400_0000, 1 << 8); // BG0 habilitado, modo 0
-        bus.Write16(0x0400_0008, 8 << 8); // mapa no screen block 8
-        bus.Write16(0x0500_0002, 0x001F); // palette 1 = vermelho
-        bus.Write16(0x0600_0020, 0x0001); // primeiro pixel do tile 1 = índice 1
-        bus.Write16(0x0600_4000, 1);      // célula 0 usa tile 1
+        bus.Write16(0x0400_0000, 1 << 8); // Enable BG0 in mode 0.
+        bus.Write16(0x0400_0008, 8 << 8); // Place the map in screen block 8.
+        bus.Write16(0x0500_0002, 0x001F); // Palette entry 1 is red.
+        bus.Write16(0x0600_0020, 0x0001); // Tile 1 starts with palette index 1.
+        bus.Write16(0x0600_4000, 1);      // Map cell 0 references tile 1.
 
         bus.Io.Tick(DisplayController.HDrawCycles);
 
@@ -109,14 +109,14 @@ public sealed class TimingTests
         var bus = new GbaBus();
         bus.Write16(0x0400_0000, 1 << 8);
         bus.Write16(0x0400_0008, 8 << 8);
-        bus.Write16(0x0400_0010, 7);      // HOFS BG0
-        bus.Write16(0x0500_0002, 0x7C00); // palette 1 = azul
-        bus.Write16(0x0600_0022, 0x1000); // pixel x=7 do tile 1 = índice 1
-        bus.Write16(0x0600_4000, 1 | (1 << 10)); // tile com flip horizontal
+        bus.Write16(0x0400_0010, 7);      // BG0 horizontal offset.
+        bus.Write16(0x0500_0002, 0x7C00); // Palette entry 1 is blue.
+        bus.Write16(0x0600_0022, 0x1000); // Tile 1 pixel x=7 uses palette index 1.
+        bus.Write16(0x0600_4000, 1 | (1 << 10)); // Horizontally flip tile 1.
 
         bus.Io.Tick(DisplayController.HDrawCycles);
 
-        // Scroll 7 seleciona x=7, flip o transforma em pixel 0 (transparente).
+        // Scrolling to x=7 and flipping selects transparent pixel zero.
         Assert.Equal(0xFF00_0000u, bus.Io.Display.FrameBuffer.Span[0]);
     }
 }

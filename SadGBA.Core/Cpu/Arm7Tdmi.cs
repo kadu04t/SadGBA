@@ -4,8 +4,8 @@ using SadGBA.Core.Bus;
 namespace SadGBA.Core.Cpu;
 
 /// <summary>
-/// Interpretador ARM7TDMI. Implementa o conjunto ARMv4T essencial e mantém
-/// ARM e Thumb no mesmo pipeline lógico, com bancos de SP/LR por modo.
+/// ARM7TDMI interpreter implementing the essential ARMv4T instruction set,
+/// ARM/Thumb execution states, exceptions, and banked registers.
 /// </summary>
 public sealed class Arm7Tdmi
 {
@@ -89,7 +89,7 @@ public sealed class Arm7Tdmi
         LastException = CpuException.None;
     }
 
-    /// <summary>Prepara bancos de pilha e estado usados na entrada de um Game Pak sem executar a BIOS.</summary>
+    /// <summary>Initializes the banked stacks and cartridge entry state when skipping the BIOS.</summary>
     public void InitializeForCartridge(uint entryPoint)
     {
         Reset();

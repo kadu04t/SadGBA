@@ -1,6 +1,6 @@
 namespace SadGBA.Core.Interrupts;
 
-/// <summary>Controla IE, IF e IME e produz a linha IRQ combinada da CPU.</summary>
+/// <summary>Models IE, IF, and IME and produces the combined CPU IRQ line.</summary>
 public sealed class InterruptController
 {
     private const ushort ValidMask = 0x3FFF;

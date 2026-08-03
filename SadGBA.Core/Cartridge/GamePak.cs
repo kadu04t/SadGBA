@@ -1,6 +1,6 @@
 namespace SadGBA.Core.Cartridge;
 
-/// <summary>Cartucho Game Pak. ROM é somente leitura; SRAM persiste separadamente.</summary>
+/// <summary>Game Pak cartridge with read-only ROM and separately persisted SRAM.</summary>
 public sealed class GamePak
 {
     public const int MaximumRomSize = 32 * 1024 * 1024;

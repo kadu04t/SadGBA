@@ -3,8 +3,8 @@ using SadGBA.Core.Interrupts;
 namespace SadGBA.Core.Ppu;
 
 /// <summary>
-/// Temporização básica do LCD do GBA: 240x160, 228 linhas e 1232 ciclos por linha.
-/// A rasterização por tiles será adicionada sobre esta base determinística.
+/// Provides deterministic GBA LCD timing and scanline rendering for text and
+/// bitmap backgrounds.
 /// </summary>
 public sealed class DisplayController
 {
@@ -231,7 +231,7 @@ public sealed class DisplayController
                 paletteIndex = (((entry >> 12) & 0xF) * 16) + color;
             }
 
-            // Índice zero é transparente em backgrounds de tiles.
+            // Palette index zero is transparent on text backgrounds.
             if ((paletteIndex & (color256 ? 0xFF : 0xF)) != 0)
                 output[x] = ExpandColor(video.ReadPalette16((uint)paletteIndex * 2));
         }

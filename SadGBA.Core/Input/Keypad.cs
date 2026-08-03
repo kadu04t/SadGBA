@@ -15,7 +15,7 @@ public enum GbaButton : ushort
     L = 1 << 9,
 }
 
-/// <summary>Estado das dez teclas; KEYINPUT usa lógica ativa em nível baixo.</summary>
+/// <summary>Tracks the ten GBA buttons; KEYINPUT uses active-low logic.</summary>
 public sealed class Keypad
 {
     private ushort _pressed;

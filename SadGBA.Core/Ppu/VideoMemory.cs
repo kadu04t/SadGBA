@@ -1,6 +1,6 @@
 namespace SadGBA.Core.Ppu;
 
-/// <summary>Palette RAM, VRAM e OAM com os espelhos e larguras do hardware.</summary>
+/// <summary>Palette RAM, VRAM, and OAM with hardware mirroring and access-width behavior.</summary>
 public sealed class VideoMemory
 {
     public const int PaletteSize = 1024;
@@ -37,7 +37,7 @@ public sealed class VideoMemory
     public void WriteVram16(uint address, ushort value) =>
         Write16(_vram, (uint)MapVram(address & ~1u), value);
 
-    /// <summary>OAM ignora escritas de byte feitas pela CPU.</summary>
+    /// <summary>OAM ignores byte writes performed by the CPU.</summary>
     public void WriteOam8(uint address, byte value)
     {
         _ = address;

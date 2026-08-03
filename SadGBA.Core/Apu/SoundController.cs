@@ -3,8 +3,8 @@ namespace SadGBA.Core.Apu;
 public readonly record struct StereoSample(short Left, short Right);
 
 /// <summary>
-/// Estado inicial da APU. Preserva registradores, wave RAM e FIFOs Direct
-/// Sound e fornece um relógio de amostragem; síntese PSG será adicionada depois.
+/// Initial APU state. Preserves registers, wave RAM, and Direct Sound FIFOs,
+/// and provides a sample clock for the future PSG implementation.
 /// </summary>
 public sealed class SoundController
 {

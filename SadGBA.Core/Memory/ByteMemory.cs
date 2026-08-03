@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 
 namespace SadGBA.Core.Memory;
 
-/// <summary>Bloco de memória little-endian com espelhamento por máscara.</summary>
+/// <summary>Little-endian memory block with mask-based mirroring.</summary>
 public abstract class ByteMemory
 {
     private readonly byte[] _data;
@@ -60,4 +60,3 @@ public abstract class ByteMemory
 
     public void Clear() => Array.Clear(_data);
 }
-

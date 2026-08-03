@@ -3,7 +3,7 @@ using SadGBA.Core.Cpu;
 
 namespace SadGBA.Core;
 
-/// <summary>Compõe CPU, barramento e dispositivos sincronizados do GBA.</summary>
+/// <summary>Coordinates the GBA CPU, system bus, and clocked devices.</summary>
 public sealed class GbaMachine
 {
     public const uint CartridgeEntryPoint = 0x0800_0000;
